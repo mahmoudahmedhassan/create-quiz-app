@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300&family=Yellowtail&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+.welcome-user {
+  text-align: center;
+  margin-top: 30px;
+}
+.welcome-user h1 {
+  display: inline-block;
+  padding: 0 10px 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  font-family: "Yellowtail", cursive;
+}
+.hey {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  font-size: 2vw;
+  font-family: "Big Shoulders Stencil Display", cursive;
+  font-family: "Yellowtail", cursive;
+}
+.questions-number{
+    text-align: center;
+    margin: 20px;
+    font-size: 2vw;
+    font-family: "Big Shoulders Stencil Display", cursive;
+  font-family: "Yellowtail", cursive;
+}
+.questions{
+    text-align: center;
+    border: 5px solid rgb(128,128,128);
+    margin: 30px;
+    padding: 20px;
+}
+.the-questions{
+    font-size: 2vw;
+    text-decoration: underline;
+    padding: 10px;
+    font-family: 'Oswald', sans-serif;
+}
+.answer{
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 5px;
+    background: beige;
+    cursor: pointer;
+    margin: 20px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-around;
+}

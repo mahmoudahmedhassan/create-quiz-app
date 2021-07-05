@@ -1,0 +1,22 @@
+.home{
+    padding: 20px;
+     
+}
+.quiz-setting{
+    display: flex;
+     flex-direction: column;
+     align-items: center;
+    
+}
+.quiz-setting h3{
+    text-transform: capitalize;
+    font-family: Cairo;
+    font-weight: bold;
+    font-size:3vw
+}
+.quiz-select{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+}
