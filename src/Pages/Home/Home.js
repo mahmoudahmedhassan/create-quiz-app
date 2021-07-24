@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState ,useEffect} from "react";
 
 // import style file
 import "./home.css";
@@ -45,9 +45,8 @@ function Home({ name, setName, fetchQuestions }) {
       fetchQuestions(category, difficulty);
       history.push("/quiz");
     }
-    
   };
-
+  
   return (
     <div className="home">
       <Container fluid>

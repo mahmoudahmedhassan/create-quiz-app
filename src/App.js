@@ -41,7 +41,23 @@ function App() {
        useEffect(() => {
         fetchQuestions();
       }, []);
-      
+
+
+      const LOCALSTORGE_KEY = "key todos";
+
+      useEffect(() => {
+        const storgeTodos = JSON.parse(localStorage.getItem(LOCALSTORGE_KEY));
+        if (storgeTodos) {
+          setQuestions(storgeTodos);
+     
+        }
+      }, []);
+    
+      useEffect(() => {
+        localStorage.setItem(LOCALSTORGE_KEY, JSON.stringify(questions));
+      }, [questions]);
+    
+    
 
   return (
     <>

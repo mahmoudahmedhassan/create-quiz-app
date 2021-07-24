@@ -3,7 +3,7 @@ import "./quiz.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { useHistory } from "react-router";
+import { useHistory ,Redirect } from "react-router";
 
 
 function Quiz({ questions, name, setScore, score }) {
@@ -24,8 +24,15 @@ function Quiz({ questions, name, setScore, score }) {
           questions[currentQuestion]?.correct_answer,
           ...questions[currentQuestion]?.incorrect_answers,
         ])
-      );
+      )
     }
+
+    if(!questions){
+      return history.push("/");
+    }
+    console.log(questions)
+
+
   }, [questions, currentQuestion]);
 
   const handleShuffle = (list) => {
@@ -79,14 +86,15 @@ function Quiz({ questions, name, setScore, score }) {
           </div>
           <div className="hey">
             <p className="title-questions">
-              {questions[currentQuestion].category}
+              {/* {questions[currentQuestion].category} */}
+              {questions[currentQuestion]?.category}
             </p>
             <p className="score-questions">score : {score}</p>
           </div>
           <div className="questions-number">Question {[currentQuestion +1]} :</div>
           <div className="questions">
             <div className="the-questions">
-              {questions[currentQuestion].question}
+              {questions[currentQuestion]?.question}
             </div>
 
             <Container>

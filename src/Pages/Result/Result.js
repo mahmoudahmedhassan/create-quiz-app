@@ -9,6 +9,24 @@ function Result({setScore, score }) {
     setScore(0)
 
   };
+  
+  const LOCALSTORGE_KEY = "key todos";
+
+  useEffect(() => {
+    const storgeTodos = JSON.parse(localStorage.getItem(LOCALSTORGE_KEY));
+    if (storgeTodos) {
+      setScore(storgeTodos);
+ 
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCALSTORGE_KEY, JSON.stringify(score));
+  }, [score]);
+
+
+
+
 
   
   const styles_main = {
