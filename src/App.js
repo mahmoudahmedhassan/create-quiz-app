@@ -1,10 +1,11 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import "./App.css";
 // import compnents
 import Header from "./Components/header/Header";
 import Footer from "./Components/footer/Footer";
 import Home from "./Pages/Home/Home";
 import Quiz from "./Pages/Quiz/Quiz";
+import Result from "./Pages/Result/Result";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -37,10 +38,14 @@ function App() {
            console.log(err)
         })
        }
+       useEffect(() => {
+        fetchQuestions();
+      }, []);
+      
 
   return (
     <>
-      <div className="App" style={{ background: " url(/pic/ques1.png)" }}>
+      <div className="App" style={{ background: " url(/pic/ques1.png)"}} >
         <Router>
           <Header />
           <Switch>
@@ -50,11 +55,13 @@ function App() {
             <Route path="/quiz">
               <Quiz setQuestions={setQuestions} questions={questions} name={name} setScore={setScore} score={score} />
             </Route>
+            <Route path="/result">
+            <Result score={score} setScore={setScore}/>
+            </Route>
           </Switch>
         </Router>
       </div>
-      <Footer />
-    </>
+     </>
   );
 }
 

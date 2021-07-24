@@ -3,72 +3,120 @@ import "./quiz.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useHistory } from "react-router";
+
 
 function Quiz({ questions, name, setScore, score }) {
+  const [options, setOptions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [error, setError] = useState(false);
+  const [selected, setSelected] = useState();
+  const history = useHistory();
 
-  const [options, setOptions] = useState();
-  const [currentQuestion,setCurrentQuestion] = useState(0);
+ 
+
+  const correct =questions[currentQuestion]?.correct_answer;
 
   useEffect(() => {
- 
-    setOptions(
-      questions &&
+    if (questions[currentQuestion]) {
+      setOptions(
         handleShuffle([
           questions[currentQuestion]?.correct_answer,
           ...questions[currentQuestion]?.incorrect_answers,
         ])
-    );
-  }, [questions]);
-
-  console.log(questions);
-  console.log(options);
- 
+      );
+    }
+  }, [questions, currentQuestion]);
 
   const handleShuffle = (list) => {
     return list.sort(() => Math.random() - 0.5);
   };
 
+  
+  const handleCheck =(option) => {
+    setSelected(option)
+    if (option === correct){ return setScore(score + 1)}
+    setError(false)
+
+  }
+  const handelSelecte=(option) => {
+
+    console.log(correct)
+    if(selected === option && selected === correct){
+      return 'correct'
+    }else if(selected === option && selected !==correct){
+      return 'worng'
+    }else if(option === correct){
+      return 'correct'
+    }
+
+  }
+
+  const handleQuit=()=>{
+    setCurrentQuestion (0);
+    setSelected( );
+    history.push("/");
+  }
+  const handleNext =()=>{
+    if(currentQuestion > 8 ){
+      history.push("/result");
+    }else if(selected){
+      setCurrentQuestion(currentQuestion +1);
+      setSelected();
+    }else{
+      setError('Please select answer')
+    }
+
+
+  }
 
   return (
     <div>
-      {questions ? (
+      { questions ? (
         <>
           <div className="welcome-user">
             <h1> welcome,{name}</h1>
           </div>
           <div className="hey">
-            {/* <p className="title-questions">{questions[currentQuestion].category}</p> */}
+            <p className="title-questions">
+              {questions[currentQuestion].category}
+            </p>
             <p className="score-questions">score : {score}</p>
           </div>
-          <div className="questions-number"> questions 1 :</div>
+          <div className="questions-number">Question {[currentQuestion +1]} :</div>
           <div className="questions">
             <div className="the-questions">
-              In the hexadecimal system, what number comes after 9?
+              {questions[currentQuestion].question}
             </div>
 
             <Container>
               <Row>
-                <Col xs={12} md={6}>
-                  <div className="answer">34</div>
-                </Col>
-                <Col xs={12} md={6}>
-                  <div className="answer">66</div>
-                </Col>
-            
-                <Col xs={12} md={6}>
-                  <div className="answer">a</div>
-                </Col>
-                <Col xs={12} md={6}>
-                  <div className="answer">b</div>
-                </Col>
+                 {options.map((option) => (
+                  <Col xs={12} md={6}>
+                    <button
+                      key={option}
+                      className={ `answer ${selected && handelSelecte(option)}` }
+                      onClick={() => {
+                        handleCheck(option);
+                       }}
+                       disabled={selected}
+                    >
+                       {option}
+                    </button>
+                  </Col>
+                ))}
               </Row>
             </Container>
 
             <div className="buttons">
-              <Button variant="contained" color="secondary" herf={'/'}>
+              <Button variant="contained" color="secondary"
+              onClick={handleQuit}
+               >
                 end
               </Button>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary"
+              onClick={handleNext} 
+              >
                 next question
               </Button>
             </div>

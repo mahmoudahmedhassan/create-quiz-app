@@ -37,7 +37,7 @@ function Home({ name, setName, fetchQuestions }) {
   };
 
   const handelSubmit = () => {
-    if (!category || !difficulty || !name ) {
+    if (!category || !difficulty || !name && name === "" ) {
       setError(true);
       return;
     } else {
