@@ -19,6 +19,7 @@ import Categories from "../../Data/Categories";
 import { useHistory } from "react-router";
 
 function Home({ name, setName, fetchQuestions }) {
+
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [error, setError] = useState(false);
@@ -36,8 +37,10 @@ function Home({ name, setName, fetchQuestions }) {
     setName(event.target.value);
   };
 
+// ============= check and set error to form ================ 
+
   const handelSubmit = () => {
-    if (!category || !difficulty || !name && name === "" ) {
+    if (!category || !difficulty || !name ) {
       setError(true);
       return;
     } else {
@@ -46,7 +49,7 @@ function Home({ name, setName, fetchQuestions }) {
       history.push("/quiz");
     }
   };
-  
+ 
   return (
     <div className="home">
       <Container fluid>

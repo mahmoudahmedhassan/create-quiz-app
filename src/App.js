@@ -26,6 +26,9 @@ function App() {
 
   //   setQuestions(data.results);
   //   };
+  
+
+  //================ fetch data ====================
 
     const fetchQuestions=(category = "", Difficulty = "") =>{
        axios.get(
@@ -34,6 +37,7 @@ function App() {
         }${Difficulty && `&difficulty=${Difficulty}`}&type=multiple`).then(res =>{
           setQuestions(res.data.results)
          })
+
         .catch(err =>{
            console.log(err)
         })
@@ -41,24 +45,7 @@ function App() {
        useEffect(() => {
         fetchQuestions();
       }, []);
-
-
-      const LOCALSTORGE_KEY = "key todos";
-
-      useEffect(() => {
-        const storgeTodos = JSON.parse(localStorage.getItem(LOCALSTORGE_KEY));
-        if (storgeTodos) {
-          setQuestions(storgeTodos);
-     
-        }
-      }, []);
-    
-      useEffect(() => {
-        localStorage.setItem(LOCALSTORGE_KEY, JSON.stringify(questions));
-      }, [questions]);
-    
-    
-
+ 
   return (
     <>
       <div className="App" style={{ background: " url(/pic/ques1.png)"}} >

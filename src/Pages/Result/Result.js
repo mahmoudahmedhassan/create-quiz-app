@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import Button from '@material-ui/core/Button';
 
 function Result({setScore, score }) {
+
   const history = useHistory();
   const goHome = () => {
     history.push("./");
@@ -10,12 +11,12 @@ function Result({setScore, score }) {
 
   };
   
-  const LOCALSTORGE_KEY = "key todos";
+  const LOCALSTORGE_KEY = "key score";
 
   useEffect(() => {
-    const storgeTodos = JSON.parse(localStorage.getItem(LOCALSTORGE_KEY));
-    if (storgeTodos) {
-      setScore(storgeTodos);
+    const storgeScore = JSON.parse(localStorage.getItem(LOCALSTORGE_KEY));
+    if (storgeScore) {
+      setScore(storgeScore);
  
     }
   }, []);
@@ -24,10 +25,7 @@ function Result({setScore, score }) {
     localStorage.setItem(LOCALSTORGE_KEY, JSON.stringify(score));
   }, [score]);
 
-
-
-
-
+ 
   
   const styles_main = {
     height: "100vh",
@@ -56,7 +54,6 @@ function Result({setScore, score }) {
         </Button>
         </div>
         
-         
      </div>
   );
 }
