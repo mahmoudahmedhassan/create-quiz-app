@@ -2,7 +2,6 @@ import {useState,useEffect} from 'react';
 import "./App.css";
 // import compnents
 import Header from "./Components/header/Header";
-import Footer from "./Components/footer/Footer";
 import Home from "./Pages/Home/Home";
 import Quiz from "./Pages/Quiz/Quiz";
 import Result from "./Pages/Result/Result";
@@ -63,7 +62,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      </div>
+       </div>
      </>
   );
 }

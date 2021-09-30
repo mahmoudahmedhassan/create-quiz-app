@@ -19,7 +19,7 @@ function Result({setScore, score }) {
       setScore(storgeScore);
  
     }
-  }, []);
+  }, [setScore]);
 
   useEffect(() => {
     localStorage.setItem(LOCALSTORGE_KEY, JSON.stringify(score));

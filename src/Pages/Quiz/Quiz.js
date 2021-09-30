@@ -3,12 +3,11 @@ import "./quiz.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { useHistory, Redirect } from "react-router";
+import { useHistory } from "react-router";
 
 function Quiz({ questions, name, setScore, score }) {
   const [options, setOptions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [error, setError] = useState(false);
   const [selected, setSelected] = useState();
   const history = useHistory();
 
@@ -38,8 +37,7 @@ function Quiz({ questions, name, setScore, score }) {
     if (option === correct) {
       return setScore(score + 1);
     }
-    setError(false);
-  };
+   };
    
   // ============ select options and compare to correct answers ============
   const handelSelecte = (option) => {
@@ -67,8 +65,6 @@ function Quiz({ questions, name, setScore, score }) {
     } else if (selected) {
       setCurrentQuestion(currentQuestion + 1);
       setSelected();
-    } else {
-      setError("Please select answer");
     }
   };
 
