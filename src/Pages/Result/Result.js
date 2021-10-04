@@ -29,8 +29,7 @@ function Result({setScore, score }) {
   
   const styles_main = {
     height: "100vh",
-    display: "flex",
-  };
+   };
 
   const styles_h1 = {
     margin: "auto",

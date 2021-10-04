@@ -10,19 +10,21 @@
   padding: 0 10px 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
   font-family: "Yellowtail", cursive;
+  font-size: 2rem;
+
 }
 .hey {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 20px;
-  font-size: 2vw;
+  font-size: 1.5rem;
   font-family: "Big Shoulders Stencil Display", cursive;
   font-family: "Yellowtail", cursive;
 }
 .questions-number{
     text-align: center;
     margin: 20px;
-    font-size: 2vw;
+    font-size: 2rem;
     font-family: "Big Shoulders Stencil Display", cursive;
   font-family: "Yellowtail", cursive;
 }
@@ -33,11 +35,13 @@
     padding: 20px;
 }
 .the-questions{
-    font-size: 2vw;
     text-decoration: underline;
     padding: 10px;
     font-family: 'Oswald', sans-serif;
 }
+.answer-button{
+  display:flex;
+ }
 .answer{
     border: 1px solid;
     padding: 10px;

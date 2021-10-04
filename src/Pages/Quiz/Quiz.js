@@ -25,11 +25,10 @@ function Quiz({ questions, name, setScore, score }) {
     }
   }, [questions, currentQuestion]);
 
-// ========= make random answers ==========
+  // ========= make random answers ==========
   const handleShuffle = (list) => {
     return list.sort(() => Math.random() - 0.5);
   };
-
 
   // ======= counter score function ========
   const handleCheck = (option) => {
@@ -37,12 +36,11 @@ function Quiz({ questions, name, setScore, score }) {
     if (option === correct) {
       return setScore(score + 1);
     }
-   };
-   
+  };
+
   // ============ select options and compare to correct answers ============
   const handelSelecte = (option) => {
-
-     if (selected === option && selected === correct) {
+    if (selected === option && selected === correct) {
       return "correct";
     } else if (selected === option && selected !== correct) {
       return "worng";
@@ -50,14 +48,14 @@ function Quiz({ questions, name, setScore, score }) {
       return "correct";
     }
   };
- 
-// ========= end the game and back to home page =========
+
+  // ========= end the game and back to home page =========
   const handleQuit = () => {
     setCurrentQuestion(0);
     setSelected();
     history.push("/");
   };
-  
+
   // ========= go to next question =========
   const handleNext = () => {
     if (currentQuestion > 8) {
@@ -68,7 +66,6 @@ function Quiz({ questions, name, setScore, score }) {
     }
   };
 
- 
   return (
     <div>
       {questions ? (
@@ -77,10 +74,10 @@ function Quiz({ questions, name, setScore, score }) {
             <h1> welcome,{name}</h1>
           </div>
           <div className="hey">
-            <p className="title-questions">
+            <h1 className="title-questions">
               {/* {questions[currentQuestion].category} */}
               {questions[currentQuestion]?.category}
-            </p>
+            </h1>
             <p className="score-questions">score : {score}</p>
           </div>
           <div className="questions-number">
@@ -91,21 +88,24 @@ function Quiz({ questions, name, setScore, score }) {
               {questions[currentQuestion]?.question}
             </div>
 
- 
             <Container>
               <Row>
                 {options.map((option) => (
                   <Col xs={12} md={6}>
-                    <button
-                      key={option}
-                      className={`answer ${selected && handelSelecte(option)}`}
-                      onClick={() => {
-                        handleCheck(option);
-                      }}
-                      disabled={selected}
-                    >
-                      {option}
-                    </button>
+                    <div className='answer-button'>
+                      <button
+                        key={option}
+                        className={`answer ${
+                          selected && handelSelecte(option)
+                        }`}
+                        onClick={() => {
+                          handleCheck(option);
+                        }}
+                        disabled={selected}
+                      >
+                        {option}
+                      </button>
+                    </div>
                   </Col>
                 ))}
               </Row>
@@ -126,7 +126,6 @@ function Quiz({ questions, name, setScore, score }) {
           </div>
         </>
       ) : (
-
         <CircularProgress />
       )}
     </div>
